@@ -1,0 +1,67 @@
+{% extends 'userapp/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<table  class="table table-hover">
+  <thead>
+    <tr>
+       <th contenteditable='true' scope="col">Period</th>
+       <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+     {% for i in timetable %}
+     <tr>
+        <td >{{ forloop.counter }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="monday">{{ i.monday }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="tuesday">{{ i.tuesday }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="wednesday">{{ i.wednesday }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="thursday">{{ i.thursday }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="friday">{{ i.friday }}</td>
+        <td class="editable" data-id="{{ i.id }}" data-type="friday"><a href="{% url 'edit' pk=i.id %}"><button class="btn btn-success"> Edit</button></a></td>
+         <td class="editable" data-id="{{ i.id }}" data-type="friday"><a href="{% url 'delete' pk=i.id %}"><button class="btn btn-success"> Delete</button></a></td>
+
+         </tr>
+
+
+     {% endfor %}
+
+  </tbody>
+</table>
+
+<!--     <button input = 'submit' name="add" id="add" class = "btn btn-success">add</button>-->
+
+    <a href = "{% url 'add' %}"> <button input = 'submit' name="add" id="sav" class = "btn btn-success">Add</button></a>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
